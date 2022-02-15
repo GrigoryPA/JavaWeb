@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Организация, название проекта и его версия-->
+  <groupId>GRIGORY</groupId>
+  <artifactId>mvnweb1</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+  <!-- -->
+  <name>mvnweb1 Maven Webapp</name>
+  <!-- FIXME change it to the project's website -->
+  <!-- путь к репозиторию проекта, откуда его можно скачать-->
+  <url>http://www.example.com</url>
+
+  <!-- версии библиотек, плагинов-->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
+  <!--зависимости проекта-->
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+	  <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>5.0.0</version>
+	</dependency>
+  </dependencies>
+
+  <!--сборка-->
+  <build>
+    <finalName>mvnweb1</finalName>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+      <!-- функциональные модули сборки-->
+      
+      
+        <plugin>
+          <!-- Плагин maven-clean-plugin используется, когда надо удалить файлы,
+           созданные во время сборки. У плагина только одна команда clean. -->
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        
+        
+        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+        <plugin>
+          <!-- Плагин копирования ресурсов maven-resources-plugin имеет командa
+          copy-resources, которая позволяет все ресурсы (файлы изображений, файлы
+.         properties) скопировать в директорию target.-->
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        
+        
+        <plugin>
+          <!-- Плагин maven-compiler-plugin имеет две команды: compile - компиляция
+          исходников, по умолчанию связана с фазой compile и testCompile - компиляция тестов,
+           по умолчанию связана с фазой test.-->
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        
+        
+        <plugin>
+        <!-- Плагин maven-surefire-plugin предназначен для запуска тестов и генерации отчетов
+         по результатам их выполнения. Он содержит единственную команду test. -->
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+        
+        
+        <plugin>
+        <!--Плагин maven-war-plugin отвечает за сбор всех зависимостей артефактов,
+         классов и ресурсов веб-приложения и их упаковку в архив вебприложения.
+          По умолчанию он запускается с командой war, которая создает файл war.-->
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.2.2</version>
+        </plugin>
+        
+        
+        <plugin>
+        <!-- Плагин maven-install-plugin используется для добавления артифактов в
+        локальный репозиторий. Основной командой этого плагина является install,
+        которая по умолчанию привязана к этапу установки-->
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        
+        
+        <plugin>
+        <!--Для выполнения этапа копирование архива в удаленный репозиторий
+        необходима ручная настройка плагина maven-deploy-plugin, где должен быть
+        указан путь к удаленному репозиторию (по умолчанию путь к удаленному
+        репозиторию находится в корневом pom.xml). 
+        В большинстве сборок проекта фаза развертывания реализуется с помощью команды deploy -->
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+        
+        
+        <!-- Лабораторная №3
+        Плагин для формирования докментации-->
+        <plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-javadoc-plugin</artifactId>
+		  <version>3.1.1</version>
+		  <executions>
+		    <execution>
+		      <id>attach-javadocs</id>
+		      <goals>
+		        <goal>javadoc</goal>
+		      </goals>
+		    </execution>
+		  </executions>
+		</plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
